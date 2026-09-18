@@ -62,5 +62,14 @@ dashboard/           # Next.js frontend (separate directory)
 
 ## Git Info
 - **Repository**: Sparrow375/AutoPR
-- **Branch Strategy**: main (stable), dev (development), feature/* (per-feature)
-- **Status**: Fresh repo, no commits yet
+- **Branch Strategy**: main (stable), dev (development), feat/* (per-feature)
+- **Current Branch**: dev
+- **Status**: Foundation committed — scaffolding, conventions, shared contracts all in place
+
+## Key Files for Sync
+- `CONTRIBUTING.md` — Full ground rules, conventions, directory ownership
+- `autopr/api/events.py` — **SHARED CONTRACT** (Python source of truth)
+- `dashboard/src/lib/types.ts` — **SHARED CONTRACT** (TypeScript mirror)
+- `dashboard/src/lib/mockEvents.ts` — Mock data for frontend development
+- `autopr/config/settings.py` — Central configuration
+- `autopr/tools/exceptions.py` — Exception hierarchy
