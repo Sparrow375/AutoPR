@@ -45,10 +45,11 @@ class Settings(BaseSettings):
     api_port: int = 8000
 
     # ---- Model Configuration ----
-    default_model: str = "gemini-2.5-flash"
-    planning_model: str = "gemini-2.5-pro"
-    coding_model: str = "gemini-2.5-flash"
-    review_model: str = "gemini-2.5-pro"
+    default_model: str = "gemini-3.5-flash-lite"
+    planning_model: str = "gemini-3.5-flash-lite"
+    coding_model: str = "gemini-3.5-flash-lite"
+    review_model: str = "gemini-3.5-flash-lite"
+    embedding_model: str = "models/gemini-embedding-001"
 
     # ---- Agent Behavior ----
     max_retry_attempts: int = Field(default=3, ge=1, le=10)
@@ -62,6 +63,7 @@ class Settings(BaseSettings):
         "env_file": ".env",
         "env_file_encoding": "utf-8",
         "case_sensitive": False,
+        "extra": "ignore",
     }
 
 

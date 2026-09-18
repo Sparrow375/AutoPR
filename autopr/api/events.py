@@ -11,18 +11,17 @@ real-time WebSocket communication between the API server and dashboard.
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
-from enum import Enum
+from datetime import UTC, datetime
+from enum import StrEnum
 from typing import Any
 
 from pydantic import BaseModel, Field
-
 
 # ---------------------------------------------------------------------------
 # Enums
 # ---------------------------------------------------------------------------
 
-class EventType(str, Enum):
+class EventType(StrEnum):
     """All possible WebSocket event types."""
 
     PIPELINE_STARTED = "pipeline_started"
@@ -41,7 +40,7 @@ class EventType(str, Enum):
     PIPELINE_COMPLETED = "pipeline_completed"
 
 
-class Stage(str, Enum):
+class Stage(StrEnum):
     """Pipeline stages in execution order."""
 
     FETCHING = "fetching"
@@ -51,14 +50,14 @@ class Stage(str, Enum):
     NOTIFYING = "notifying"
 
 
-class WorkItemSource(str, Enum):
+class WorkItemSource(StrEnum):
     """Supported work item tracker sources."""
 
     LINEAR = "linear"
     GITHUB = "github"
 
 
-class FileAction(str, Enum):
+class FileAction(StrEnum):
     """Actions that can be performed on a file."""
 
     CREATE = "create"
@@ -66,7 +65,7 @@ class FileAction(str, Enum):
     DELETE = "delete"
 
 
-class CheckStatus(str, Enum):
+class CheckStatus(StrEnum):
     """Status of a validation check."""
 
     PASS = "pass"
@@ -214,7 +213,7 @@ class PipelineEvent(BaseModel):
     """
 
     run_id: str
-    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(UTC))
     event_type: EventType
     stage: Stage | None = None
     data: dict[str, Any] = {}
