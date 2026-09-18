@@ -65,6 +65,8 @@ dashboard/           # Next.js frontend (separate directory)
 - **Branch Strategy**: main (stable), dev (development), feat/* (per-feature)
 - **Current Branch**: dev
 - **Status**: Foundation committed — scaffolding, conventions, shared contracts all in place
+- **Local Clone**: Cloned to `c:\Users\SRIRAM\Documents\GitHub\Hack` on 2026-09-18
+- **Latest Commit**: `8ec8acb` — docs: update context.md with current project state
 
 ## Key Files for Sync
 - `CONTRIBUTING.md` — Full ground rules, conventions, directory ownership

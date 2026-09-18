@@ -1,0 +1,116 @@
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  animation: slideUp 0.5s ease both;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.icon {
+  font-size: 28px;
+}
+
+.title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--color-neutral-800);
+}
+
+.prTitle {
+  font-size: var(--text-md);
+  font-weight: var(--weight-medium);
+  color: var(--color-neutral-800);
+  margin-bottom: var(--space-3);
+  line-height: var(--leading-normal);
+}
+
+.prNumber {
+  color: var(--color-primary-600);
+  font-weight: var(--weight-semibold);
+  margin-right: var(--space-2);
+}
+
+.summary {
+  font-size: var(--text-sm);
+  color: var(--color-neutral-600);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+.meta {
+  display: flex;
+  gap: var(--space-6);
+  margin-bottom: var(--space-5);
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.metaLabel {
+  font-size: 11px;
+  color: var(--color-neutral-400);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.branch {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  background: var(--color-neutral-100);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  color: var(--color-neutral-700);
+}
+
+.viewBtn {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-primary-600);
+  transition: color var(--transition-fast);
+}
+.viewBtn:hover {
+  color: var(--color-primary-700);
+}
+
+/* ── Confetti ── */
+.confetti {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.confettiPiece {
+  position: absolute;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+  animation: confettiFall 1s ease-out forwards;
+  opacity: 0;
+}
+
+.success .confettiPiece {
+  opacity: 1;
+}
+
+@keyframes confettiFall {
+  0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(120px) rotate(720deg); opacity: 0; }
+}

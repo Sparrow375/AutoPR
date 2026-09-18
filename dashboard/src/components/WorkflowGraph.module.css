@@ -1,0 +1,221 @@
+.container {
+  padding: var(--space-6) var(--space-4);
+  overflow-x: auto;
+}
+
+.pipeline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  min-width: 600px;
+}
+
+/* ── Stage wrapper ── */
+.stageWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* ── Connector ── */
+.connector {
+  width: 60px;
+  height: 3px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.connectorLine {
+  width: 100%;
+  height: 2px;
+  background: var(--color-neutral-200);
+  border-radius: 1px;
+  transition: background var(--transition-slow);
+}
+
+.connectorActive .connectorLine {
+  background: var(--color-primary-400);
+}
+
+.connectorPulse {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary-500);
+  border-radius: 50%;
+  animation: travelDot 1.5s ease-in-out infinite;
+}
+
+@keyframes travelDot {
+  0%   { left: 0; opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { left: calc(100% - 8px); opacity: 0; }
+}
+
+/* ── Stage Node ── */
+.stageNode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: transform var(--transition-fast);
+  min-width: 80px;
+}
+
+.stageNode:hover {
+  transform: translateY(-2px);
+}
+
+.stageNode:focus-visible {
+  outline: none;
+}
+
+.stageNode:focus-visible .nodeIcon {
+  box-shadow: var(--shadow-focus);
+}
+
+/* ── Node Icon Circle ── */
+.nodeIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all var(--transition-base);
+  border: 2px solid var(--color-neutral-200);
+  background: var(--color-neutral-0);
+}
+
+.iconText {
+  font-size: 20px;
+  line-height: 1;
+  z-index: 1;
+}
+
+/* ── State styles ── */
+.pending .nodeIcon {
+  border-color: var(--color-neutral-200);
+  background: var(--color-neutral-50);
+  opacity: 0.6;
+}
+
+.active .nodeIcon {
+  border-color: var(--color-primary-500);
+  background: var(--color-primary-50);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+  animation: nodeGlow 2s ease-in-out infinite;
+}
+
+.completed .nodeIcon {
+  border-color: var(--color-success);
+  background: var(--color-success-light);
+}
+.completed .iconText {
+  color: var(--color-success-dark);
+  font-weight: var(--weight-bold);
+  font-size: 18px;
+}
+
+.error .nodeIcon {
+  border-color: var(--color-error);
+  background: var(--color-error-light);
+}
+.error .iconText {
+  color: var(--color-error-dark);
+  font-weight: var(--weight-bold);
+  font-size: 18px;
+}
+
+.retry .nodeIcon {
+  border-color: var(--color-warning);
+  background: var(--color-warning-light);
+  animation: retryPulse 1s ease-in-out infinite;
+}
+.retry .iconText {
+  color: var(--color-warning-dark);
+  font-weight: var(--weight-bold);
+  animation: spin 1.5s linear infinite;
+}
+
+/* ── Active ring ── */
+.activeRing {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary-400);
+  opacity: 0;
+  animation: ringPulse 2s ease-out infinite;
+}
+
+@keyframes ringPulse {
+  0%   { transform: scale(0.9); opacity: 0.6; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+@keyframes nodeGlow {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15); }
+  50%      { box-shadow: 0 0 0 8px rgba(59, 130, 246, 0.1), 0 0 16px rgba(59, 130, 246, 0.15); }
+}
+
+@keyframes retryPulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15); }
+  50%      { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0.1); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Labels ── */
+.nodeLabel {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-neutral-700);
+  transition: color var(--transition-fast);
+}
+
+.active .nodeLabel { color: var(--color-primary-700); font-weight: var(--weight-semibold); }
+.completed .nodeLabel { color: var(--color-success-dark); }
+.error .nodeLabel { color: var(--color-error-dark); }
+
+.nodeDuration {
+  font-size: 11px;
+  color: var(--color-neutral-400);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Tooltip ── */
+.tooltip {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-neutral-800);
+  color: var(--color-neutral-0);
+  font-size: 11px;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-md);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  z-index: var(--z-dropdown);
+  max-width: 220px;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.stageWrapper:hover .tooltip {
+  opacity: 1;
+}

@@ -1,0 +1,66 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-sans);
+  font-weight: var(--weight-medium);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* Sizes */
+.sm {
+  font-size: 11px;
+  padding: 2px 8px;
+  height: 20px;
+}
+.md {
+  font-size: var(--text-xs);
+  padding: 3px 10px;
+  height: 24px;
+}
+
+/* Variants */
+.default {
+  background: var(--color-neutral-100);
+  color: var(--color-neutral-600);
+}
+.success {
+  background: var(--color-success-light);
+  color: var(--color-success-dark);
+}
+.warning {
+  background: var(--color-warning-light);
+  color: var(--color-warning-dark);
+}
+.error {
+  background: var(--color-error-light);
+  color: var(--color-error-dark);
+}
+.info {
+  background: var(--color-info-light);
+  color: var(--color-info-dark);
+}
+.neutral {
+  background: var(--color-neutral-150);
+  color: var(--color-neutral-500);
+}
+
+/* Dot indicator */
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.success .dot { animation: pulse 2s ease-in-out infinite; }
+.warning .dot { animation: pulse 1.5s ease-in-out infinite; }
+.error   .dot { animation: pulse 1s ease-in-out infinite; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
