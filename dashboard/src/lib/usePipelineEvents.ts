@@ -150,8 +150,11 @@ export function usePipelineEvents({
   // Auto-start mock when mock mode is enabled
   useEffect(() => {
     if (mockMode) {
-      startMock();
+      const timer = setTimeout(() => {
+        startMock();
+      }, 0);
       return () => {
+        clearTimeout(timer);
         if (cancelMockRef.current) cancelMockRef.current();
       };
     }

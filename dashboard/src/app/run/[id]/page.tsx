@@ -1,6 +1,7 @@
 "use client";
 
 import { use, useState } from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import styles from "./page.module.css";
 
@@ -52,7 +53,7 @@ export default function RunDetailPage({
       {/* Header bar */}
       <header className={styles.header}>
         <div className={styles.headerLeft}>
-          <a href="/" className={styles.backLink}>← Back</a>
+          <Link href="/" className={styles.backLink}>← Back</Link>
           <div className={styles.runInfo}>
             <h1 className={styles.runTitle}>
               {pipeline.workItemTitle || `Run ${runId}`}

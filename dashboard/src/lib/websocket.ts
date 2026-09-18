@@ -29,6 +29,7 @@ export function useWebSocket(runId: string | null): UseWebSocketReturn {
   const wsRef = useRef<WebSocket | null>(null);
   const retriesRef = useRef(0);
   const reconnectTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const connectRef = useRef<() => void>(() => {});
 
   const cleanup = useCallback(() => {
     if (reconnectTimerRef.current) {
@@ -56,9 +57,9 @@ export function useWebSocket(runId: string | null): UseWebSocketReturn {
     wsRef.current = ws;
 
     ws.onopen = () => {
+      console.info(`[WS] Connected to ${url}`);
       setConnectionState("connected");
       retriesRef.current = 0;
-      console.info(`[WS] Connected to ${url}`);
     };
 
     ws.onmessage = (msg) => {
@@ -84,7 +85,7 @@ export function useWebSocket(runId: string | null): UseWebSocketReturn {
         const delay = WS_RECONNECT_DELAY * Math.pow(2, retriesRef.current);
         retriesRef.current += 1;
         console.info(`[WS] Reconnecting in ${delay}ms (attempt ${retriesRef.current}/${MAX_RETRY_ATTEMPTS})`);
-        reconnectTimerRef.current = setTimeout(connect, delay);
+        reconnectTimerRef.current = setTimeout(() => connectRef.current(), delay);
       } else {
         console.error("[WS] Max reconnection attempts reached");
         setConnectionState("error");
@@ -106,8 +107,14 @@ export function useWebSocket(runId: string | null): UseWebSocketReturn {
   }, [connect]);
 
   useEffect(() => {
-    connect();
-    return cleanup;
+    connectRef.current = connect;
+    const timer = setTimeout(() => {
+      connect();
+    }, 0);
+    return () => {
+      clearTimeout(timer);
+      cleanup();
+    };
   }, [connect, cleanup]);
 
   return { events, connectionState, send, reconnect };

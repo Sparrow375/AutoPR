@@ -13,6 +13,21 @@ interface PRSummaryCardProps {
   success?: boolean;
 }
 
+const CONFETTI_PIECES = [
+  { left: "15%", delay: "0.1s", duration: "1.1s", color: "var(--color-primary-400)" },
+  { left: "25%", delay: "0.3s", duration: "1.4s", color: "var(--color-success)" },
+  { left: "35%", delay: "0.2s", duration: "0.9s", color: "var(--color-warning)" },
+  { left: "45%", delay: "0.4s", duration: "1.2s", color: "var(--color-stage-notifying)" },
+  { left: "55%", delay: "0.1s", duration: "1.3s", color: "var(--color-stage-fetching)" },
+  { left: "65%", delay: "0.5s", duration: "1.0s", color: "var(--color-primary-400)" },
+  { left: "75%", delay: "0.2s", duration: "1.5s", color: "var(--color-success)" },
+  { left: "85%", delay: "0.4s", duration: "1.1s", color: "var(--color-warning)" },
+  { left: "20%", delay: "0.3s", duration: "1.3s", color: "var(--color-stage-notifying)" },
+  { left: "40%", delay: "0.1s", duration: "1.0s", color: "var(--color-stage-fetching)" },
+  { left: "60%", delay: "0.5s", duration: "1.4s", color: "var(--color-primary-400)" },
+  { left: "80%", delay: "0.2s", duration: "1.2s", color: "var(--color-success)" },
+];
+
 export const PRSummaryCard: FC<PRSummaryCardProps> = ({
   url,
   number,
@@ -25,19 +40,15 @@ export const PRSummaryCard: FC<PRSummaryCardProps> = ({
     <div className={`${styles.wrapper} ${success ? styles.success : ""}`}>
       {success && (
         <div className={styles.confetti}>
-          {Array.from({ length: 12 }).map((_, i) => (
+          {CONFETTI_PIECES.map((piece, i) => (
             <span
               key={i}
               className={styles.confettiPiece}
               style={{
-                left: `${10 + Math.random() * 80}%`,
-                animationDelay: `${Math.random() * 0.5}s`,
-                animationDuration: `${0.8 + Math.random() * 0.6}s`,
-                backgroundColor: [
-                  "var(--color-primary-400)", "var(--color-success)",
-                  "var(--color-warning)", "var(--color-stage-notifying)",
-                  "var(--color-stage-fetching)",
-                ][i % 5],
+                left: piece.left,
+                animationDelay: piece.delay,
+                animationDuration: piece.duration,
+                backgroundColor: piece.color,
               }}
             />
           ))}

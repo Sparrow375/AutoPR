@@ -26,7 +26,6 @@ function formatDuration(ms: number): string {
 
 export const WorkflowGraph: FC<WorkflowGraphProps> = ({
   stages,
-  currentStage,
   onStageClick,
 }) => {
   return (

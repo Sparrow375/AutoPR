@@ -287,7 +287,7 @@ export function simulatePipeline(
   const timeouts: ReturnType<typeof setTimeout>[] = [];
   let cancelled = false;
 
-  MOCK_EVENTS.forEach((event, index) => {
+  MOCK_EVENTS.forEach((event) => {
     const baseDelay = new Date(event.timestamp).getTime() - BASE_TIME.getTime();
     const adjustedDelay = baseDelay / speedMultiplier;
 
