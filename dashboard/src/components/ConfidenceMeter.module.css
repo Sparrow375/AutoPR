@@ -1,0 +1,78 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+.gaugeWrap {
+  position: relative;
+  width: 140px;
+  height: 140px;
+}
+
+.canvas {
+  width: 140px;
+  height: 140px;
+}
+
+.scoreOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.scoreValue {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  transition: color var(--transition-base);
+}
+
+.scoreLabel {
+  font-size: 11px;
+  color: var(--color-neutral-400);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.agent {
+  font-size: var(--text-sm);
+  color: var(--color-neutral-500);
+  font-weight: var(--weight-medium);
+}
+
+.warning {
+  font-size: 11px;
+  color: var(--color-warning-dark);
+  font-weight: var(--weight-medium);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Below threshold pulsing glow */
+.belowThreshold .gaugeWrap {
+  animation: gaugeAlert 2s ease-in-out infinite;
+}
+
+@keyframes gaugeAlert {
+  0%, 100% { filter: drop-shadow(0 0 0 transparent); }
+  50%      { filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.4)); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.5; }
+}

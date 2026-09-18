@@ -1,0 +1,89 @@
+.container {
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-lg);
+  background: var(--color-neutral-0);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-neutral-150);
+  background: var(--color-neutral-50);
+}
+
+.title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-neutral-700);
+}
+
+.summary {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.allPass {
+  background: var(--color-success-light);
+  color: var(--color-success-dark);
+}
+
+.hasFail {
+  background: var(--color-error-light);
+  color: var(--color-error-dark);
+}
+
+.checkList {
+  padding: var(--space-2);
+}
+
+.checkItem {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.checkHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  border-radius: var(--radius-md);
+  list-style: none;
+  transition: background var(--transition-fast);
+}
+.checkHeader::-webkit-details-marker { display: none; }
+
+.checkHeader:hover {
+  background: var(--color-neutral-50);
+}
+
+.checkIcon { font-size: 14px; }
+.checkName { flex: 1; color: var(--color-neutral-700); font-weight: var(--weight-medium); }
+.checkStatus {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--color-neutral-400);
+}
+
+.pass .checkStatus { color: var(--color-success-dark); }
+.fail .checkStatus { color: var(--color-error-dark); }
+.skip .checkStatus { color: var(--color-neutral-400); }
+
+.checkOutput {
+  margin: 0 var(--space-3) var(--space-2);
+  padding: var(--space-3);
+  background: var(--color-neutral-100);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--color-neutral-600);
+  overflow-x: auto;
+  border: none;
+}

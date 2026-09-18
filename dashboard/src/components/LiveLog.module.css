@@ -1,0 +1,152 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-lg);
+  background: var(--color-neutral-0);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-neutral-150);
+  background: var(--color-neutral-50);
+}
+
+.title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-neutral-700);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.count {
+  font-size: 11px;
+  color: var(--color-neutral-400);
+  font-variant-numeric: tabular-nums;
+}
+
+.scrollBtn {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-sm);
+  background: var(--color-neutral-0);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--color-neutral-400);
+  transition: all var(--transition-fast);
+}
+
+.scrollBtn:hover {
+  border-color: var(--color-neutral-300);
+  color: var(--color-neutral-600);
+}
+
+.scrollActive {
+  background: var(--color-primary-50);
+  border-color: var(--color-primary-300);
+  color: var(--color-primary-600);
+}
+
+/* ── Log entries ── */
+.logContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-2);
+}
+
+.empty {
+  padding: var(--space-10);
+  text-align: center;
+  color: var(--color-neutral-400);
+  font-size: var(--text-sm);
+}
+
+.logEntry {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  transition: background var(--transition-fast);
+  animation: fadeIn 0.2s ease both;
+  flex-wrap: wrap;
+  border-left: 3px solid transparent;
+}
+
+.logEntry:hover {
+  background: var(--color-neutral-50);
+}
+
+.latest {
+  background: var(--color-neutral-50);
+}
+
+.time {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-neutral-400);
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+.icon {
+  flex-shrink: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.message {
+  flex: 1;
+  color: var(--color-neutral-700);
+  word-break: break-word;
+}
+
+.detail {
+  width: 100%;
+  margin-top: var(--space-2);
+  padding: var(--space-3);
+  background: var(--color-neutral-100);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--color-neutral-600);
+  overflow-x: auto;
+  border: none;
+}
+
+/* ── Color classes ── */
+.colorReasoning   { border-left-color: #3b82f6; }
+.colorTool        { border-left-color: #8b5cf6; }
+.colorError       { border-left-color: #ef4444; background: var(--color-error-light); }
+.colorStage       { border-left-color: #14b8a6; }
+.colorConfidence  { border-left-color: #f59e0b; }
+.colorPipeline    { border-left-color: #6366f1; }
+.colorCode        { border-left-color: #10b981; }
+.colorValidation  { border-left-color: #06b6d4; }
+.colorPR          { border-left-color: #ec4899; }
+.colorRetry       { border-left-color: #f97316; }
+.colorHuman       { border-left-color: #a855f7; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-4px); }
+  to   { opacity: 1; transform: translateX(0); }
+}

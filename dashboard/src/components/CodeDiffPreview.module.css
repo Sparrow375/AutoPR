@@ -1,0 +1,114 @@
+.container {
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-lg);
+  background: var(--color-neutral-0);
+  overflow: hidden;
+}
+
+.title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-neutral-700);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-neutral-150);
+  background: var(--color-neutral-50);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.fileCount {
+  font-weight: var(--weight-normal);
+  color: var(--color-neutral-400);
+  font-size: var(--text-xs);
+}
+
+/* ── File block ── */
+.fileBlock {
+  border-bottom: 1px solid var(--color-neutral-100);
+}
+.fileBlock:last-child {
+  border-bottom: none;
+}
+
+.fileHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-neutral-50);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  text-align: left;
+  transition: background var(--transition-fast);
+}
+.fileHeader:hover {
+  background: var(--color-neutral-100);
+}
+
+.chevron {
+  font-size: 10px;
+  color: var(--color-neutral-400);
+  width: 12px;
+}
+
+.filePath {
+  flex: 1;
+  color: var(--color-neutral-700);
+}
+
+/* ── Diff content ── */
+.diffContent {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-x: auto;
+  border: none;
+  background: transparent;
+}
+
+.diffLine {
+  display: flex;
+  padding: 0 var(--space-4);
+  min-height: 22px;
+}
+
+.lineNum {
+  width: 40px;
+  flex-shrink: 0;
+  color: var(--color-neutral-300);
+  text-align: right;
+  padding-right: var(--space-3);
+  user-select: none;
+}
+
+.lineContent {
+  flex: 1;
+  white-space: pre;
+}
+
+.added {
+  background: rgba(16, 185, 129, 0.1);
+}
+.added .lineContent {
+  color: var(--color-success-dark);
+}
+
+.removed {
+  background: rgba(239, 68, 68, 0.1);
+}
+.removed .lineContent {
+  color: var(--color-error-dark);
+  text-decoration: line-through;
+  text-decoration-color: rgba(239, 68, 68, 0.3);
+}
+
+.hunk {
+  background: rgba(59, 130, 246, 0.06);
+  color: var(--color-primary-500);
+}

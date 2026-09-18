@@ -71,4 +71,17 @@ dashboard/           # Next.js frontend (Person B workspace)
 ## Git Info
 - **Repository**: Sparrow375/AutoPR
 - **Branch Strategy**: main (stable), dev (development), feat/* (per-feature)
-- **Current Feature Branch**: `feat/backend-core`
+- **Active Branches**: `feat/backend-core` (Person A), `feat/frontend-dashboard-layout` (Person B)
+- **Integration Status**: Merged backend + frontend implementations
+
+## Implementation Status
+- **Person A (Backend)**: COMPLETE — MCP servers, RAG pipeline, ADK agents, FastAPI REST + WebSocket gateway, 20/20 pytest pass.
+- **Person B (Frontend)**: COMPLETE — Next.js 14 App Router, UI primitives, WorkflowGraph, LiveLog, ConfidenceMeter, CodeDiffPreview, A2UIRenderer, WebSocket client, REST client.
+
+## Key Files for Sync
+- `CONTRIBUTING.md` — Full ground rules, conventions, directory ownership
+- `autopr/api/events.py` — **SHARED CONTRACT** (Python source of truth)
+- `dashboard/src/lib/types.ts` — **SHARED CONTRACT** (TypeScript mirror)
+- `dashboard/src/lib/mockEvents.ts` — Mock data for frontend development
+- `autopr/config/settings.py` — Central configuration
+- `autopr/tools/exceptions.py` — Exception hierarchy
