@@ -1,0 +1,77 @@
+# ===========================
+# Python
+# ===========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+.python-version
+
+# ===========================
+# Environment & Secrets
+# ===========================
+.env
+.env.local
+.env.*.local
+
+# ===========================
+# IDEs
+# ===========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.vs/
+
+# ===========================
+# Node.js / Next.js
+# ===========================
+node_modules/
+.next/
+out/
+dashboard/.next/
+dashboard/node_modules/
+dashboard/out/
+
+# ===========================
+# ChromaDB / RAG
+# ===========================
+chroma_data/
+*.chroma
+
+# ===========================
+# OS
+# ===========================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ===========================
+# Testing
+# ===========================
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# ===========================
+# Logs
+# ===========================
+*.log
+logs/
+
+# ===========================
+# Misc
+# ===========================
+*.bak
+*.tmp
