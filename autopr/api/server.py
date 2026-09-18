@@ -98,7 +98,8 @@ async def health_check() -> dict[str, str]:
 
 @app.websocket("/ws")
 @app.websocket("/ws/events")
-async def websocket_endpoint(websocket: WebSocket) -> None:
+@app.websocket("/ws/{run_id}")
+async def websocket_endpoint(websocket: WebSocket, run_id: str | None = None) -> None:
     """WebSocket streaming endpoint for real-time dashboard visualization."""
     await manager.connect(websocket)
     try:
